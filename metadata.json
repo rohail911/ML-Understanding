@@ -1,0 +1,6 @@
+{
+  "name": "DotML - Visual Machine Learning Particle Cosmos",
+  "description": "An interactive visual universe where machine learning algorithms are explained through living data dots, animated decision boundaries, and real-time mathematical simulations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

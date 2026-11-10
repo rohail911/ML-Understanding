@@ -1,0 +1,138 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Unique Firebase user ID"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "User email address"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "User avatar URL"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Account creation timestamp"
+        }
+      },
+      "required": ["userId", "email"]
+    },
+    "SavedDataset": {
+      "title": "SavedDataset",
+      "description": "User saved machine learning dataset",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Dataset identifier"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner user ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Dataset title"
+        },
+        "description": {
+          "type": "string",
+          "description": "Summary of data"
+        },
+        "feature1": {
+          "type": "string",
+          "description": "X axis feature name"
+        },
+        "feature2": {
+          "type": "string",
+          "description": "Y axis feature name"
+        },
+        "target": {
+          "type": "string",
+          "description": "Label target name"
+        },
+        "dotCount": {
+          "type": "number",
+          "description": "Number of data points"
+        },
+        "dotsJson": {
+          "type": "string",
+          "description": "JSON stringified data points array"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        }
+      },
+      "required": ["userId", "name", "dotsJson"]
+    },
+    "ModelExperiment": {
+      "title": "ModelExperiment",
+      "description": "Saved algorithm run and performance metrics",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Experiment identifier"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner user ID"
+        },
+        "algorithmId": {
+          "type": "string",
+          "description": "ID of algorithm executed"
+        },
+        "algorithmName": {
+          "type": "string",
+          "description": "Display name of algorithm"
+        },
+        "datasetName": {
+          "type": "string",
+          "description": "Name of dataset tested"
+        },
+        "metricsJson": {
+          "type": "string",
+          "description": "JSON stringified performance metrics"
+        },
+        "paramsJson": {
+          "type": "string",
+          "description": "JSON stringified hyperparameters"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of experiment"
+        }
+      },
+      "required": ["userId", "algorithmId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document"
+    },
+    "/users/{userId}/datasets/{datasetId}": {
+      "schema": "SavedDataset",
+      "description": "User personal saved datasets"
+    },
+    "/users/{userId}/experiments/{experimentId}": {
+      "schema": "ModelExperiment",
+      "description": "User saved machine learning experiments and metrics"
+    }
+  }
+}
